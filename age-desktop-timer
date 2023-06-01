@@ -28,17 +28,21 @@ def update_time():
     # Call this function again in 100 ms
     root.after(1, update_time)
 
+def minimize(event):
+    root.iconify()
+
 # Create the root window
 root = tk.Tk()
 
 # Configure the window
-root.title('Time Since 2000')
-root.geometry('200x100')
+root.title('Age')
+root.attributes('-fullscreen', True)  # Make the window full-screen
 root.configure(background='black')
-root.attributes('-topmost', True)  # Keep the window always on top
+root.bind('<Any-KeyPress>', minimize)  # Minimize the window on any key press
+root.bind('<Any-ButtonPress>', minimize)  # Minimize the window on any mouse click
 
 # Create a label to display the time
-label = tk.Label(root, text='', font=('Arial', 30), fg='white', bg='black')
+label = tk.Label(root, text='', font=('MS Reference Sans Serif', 20), fg='white', bg='black')
 label.pack(expand=True)
 
 # Start the time updates
